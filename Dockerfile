@@ -15,7 +15,7 @@ RUN echo mariadb-server mysql-server/root_password_again password secret | debco
 RUN apt-get install -y mariadb-server mariadb-client bash
 
 RUN sed -i -e 's/bind-address/# bind-address/g' /etc/mysql/mariadb.conf.d/50-server.cnf
-RUN /etc/init.d/mysql start && mysql -u root -psecret -e "GRANT ALL ON *.* TO root@'%' WITH GRANT OPTION IDENTIFIED BY 'secret';"
+RUN /etc/init.d/mysql start && mysql -u root -psecret -e "GRANT ALL ON *.* TO root@'%' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
 
 RUN echo "" > /empty.log
 
