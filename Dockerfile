@@ -19,11 +19,6 @@ RUN /etc/init.d/mysql start && mysql -u root -psecret -e "GRANT ALL ON *.* TO ro
 
 RUN echo "" > /empty.log
 
-# RUN echo "#!/bin/bash" > /cmd.sh
-# RUN chmod +x /cmd.sh
-# RUN echo "/etc/init.d/mysql start && mysql -u root -psecret -e \"CREATE DATABASE IF NOT EXISTS ${DATABASE} COLLATE = 'utf8mb4_unicode_ci' CHARACTER SET = 'utf8mb4'\"" >> /cmd.sh
-# RUN echo "echo Welcome to the server" >> /cmd.sh
-
 COPY ./db.setup.docker /cmd.sh
 RUN chmod +x /cmd.sh
 
